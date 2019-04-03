@@ -57,6 +57,48 @@ var setTooltip = function() {
   });
 };
 
+var setInputFile = function() {
+  $('.file_inp').each(function() {
+    $(this).on('change', function() {
+      var filename;
+
+      window.FileReader ? filename = $(this)[0].files[0].name : filename = $(this).val().split('/').pop().split('\\').pop();
+
+      $(this).siblings('.js-file-name').val(filename).attr('disabled', true);
+      $(this).siblings('.js-file-label').addClass('hide');
+      $(this).siblings('.js-file-del').addClass('on');
+    });
+  });
+  $('.js-file-label').on('click', function() {
+    $(this).siblings('.file_inp').trigger('click');
+  });
+  $('.js-file-del').on('click', function() {
+    $(this).siblings('.js-file-name').val('');
+    $(this).siblings('.file_inp').val('');
+    $(this).siblings('.js-file-label').removeClass('hide');
+    $(this).removeClass('on');
+  });
+};
+
+var setCustomList = function() {
+  $('.js-list-add').on('click', function() {
+    var listClone = $(this).closest('.item_list').clone(true);
+
+    listClone.find('.js-file-label').removeClass('hide');
+    listClone.find('.js-file-del').removeClass('on');
+    listClone.find('input').val('');
+    listClone.find('.status').text('');
+    listClone.find('.js-list-add').off('click').removeClass('js-list-add plus').addClass('js-list-del minus');
+    $(this).closest('.js-list-item').append(listClone);
+    setListRemove();
+  });
+  function setListRemove() {
+    $('.js-list-del').on('click', function() {
+      $(this).closest('.item_list').remove();
+    });
+  }
+};
+
 $(document).ready(function() {
   setGnb();
   if ($('.input_date').length) {
@@ -67,4 +109,6 @@ $(document).ready(function() {
   }
   setTab();
   setTooltip();
+  setInputFile();
+  setCustomList();
 });

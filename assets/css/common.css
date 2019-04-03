@@ -122,6 +122,11 @@ h1,h2,h3,h4,h5,h6,strong {
   font-weight: 500;
 }
 
+/* common */
+.hide {
+  display: none !important;
+}
+
 /* text color */
 .txt_orange {
   color: #ff7a00;
@@ -258,6 +263,10 @@ h1,h2,h3,h4,h5,h6,strong {
   border-top: 1px solid #e8e8e8;
   box-sizing: border-box;
 }
+.footer .footer_inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .footer .privacy_list {
   overflow: hidden;
   float: left;
@@ -302,6 +311,25 @@ h1,h2,h3,h4,h5,h6,strong {
   font-size: 22px; font-weight: 400;
   border-bottom: 2px solid #333;
 }
+.sub_title_desc {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 18px; font-weight: 400;
+}
+.sub_title_more {
+  float: right;
+  font-size: 14px;
+  line-height: 45px;
+}
+.sub_title_more::after {
+  content: '';
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  width: 16px; height: 12px;
+  margin-left: 2px;
+  background: url(../images/common/arr-right.png) no-repeat center;
+}
 
 /* table */
 .tbl_wrap {
@@ -336,6 +364,9 @@ h1,h2,h3,h4,h5,h6,strong {
 }
 .tbl_wrap .size_large {
   width: 40%;
+}
+.tbl_wrap .size_medium {
+  width: 30%;
 }
 
 /* table data align */
@@ -525,7 +556,7 @@ input {
   width: 100%; height: 44px;
   padding: 0 20px;
   font-family: 'notokr';
-  font-size: 16px;
+  font-size: 14px;
   line-height: 44px;
   color: #333;
   background: #fff;
@@ -578,6 +609,62 @@ input::placeholder {
   background-position: right 12px center;
 }
 
+/* input file */
+.file_inp_box .file_inp {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+.file_inp_box.type_btn input[type="text"] {
+  float: left;
+  width: calc(100% - 120px);
+}
+.file_inp_box.type_btn .file_label {
+  display: inline-block;
+  width: 120px; height: 44px;
+  line-height: 44px;
+  font-size: 14px; font-weight: 500;
+  cursor: pointer;
+}
+.file_inp_box .file_inp_name {
+  text-overflow: ellipsis;
+}
+.file_inp_box.type_btn {
+  overflow: hidden;
+  position: relative;
+}
+.file_inp_box.type_btn .file_inp_name {
+  width: 100% !important;
+  padding-right: 25px;
+}
+.file_inp_box.type_btn .file_inp_name:disabled {
+  background: #fff;
+  color: #333;
+}
+.file_inp_box.type_btn .btn_label {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: url(../images/common/ico-attach.png) no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+.file_inp_box.type_btn .btn_file_del {
+  display: none;
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: url(../images/common/ico-close-small.png) no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+.file_inp_box.type_btn .btn_file_del.on {
+  display: block;
+}
 /* button */
 button {
   padding: 0;
@@ -593,6 +680,11 @@ button {
   box-sizing: border-box;
   text-align: center;
   font-size: 16px; font-weight: 700;  
+}
+.btn.btn_small {
+  height: 44px;
+  font-size: 14px; font-weight: 500;
+  line-height: 44px;
 }
 .btn_wrap {
   overflow: hidden;
@@ -630,6 +722,7 @@ button {
   width: 100%; height: 100%;
   line-height: normal;
   z-index: 99;
+  text-align: initial;
 }
 .layer_popup .dim {
   width: 100%; height: 100%;
